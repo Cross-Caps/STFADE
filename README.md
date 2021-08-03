@@ -109,7 +109,7 @@ For visualisations, we have two kinds of scripts.
 ### Gradient_Visualisation_Notebook [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/Cross-Caps/STFADE/blob/f03fa61e2258ae763a73cc8815cd759e44658db7/contextnet/contextnet_visualisation/gradient_visualisation/gradient_visualisation.ipynb)
 ### Loss Lists Notebook [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/Cross-Caps/STFADE/blob/f03fa61e2258ae763a73cc8815cd759e44658db7/contextnet/contextnet_visualisation/loss_landscape_visualisation/generate_loss_landscape.ipynb)
 
-### For loss landscape, go to [drive](https://drive.google.com/file/d/1rYCHvoJGesCQZhpyuLAjNDNfQkbyE7nR/view?usp=sharing)
+### For loss landscape, go to [loss video](https://github.com/Cross-Caps/STFADE/blob/9aedbcde2a8bf835e86eea912d8d04cb4beb795b/contextnet/contextnet_visualisation/loss_landscape_visualisation/video/loss_video.mp4)
 ### For gradient attribution, go to [drive](https://drive.google.com/file/d/1Smw05OEhrptbitom-lOUh7E9LjjAb-cu/view?usp=sharing)
 
 <h4 align="centre"> 
