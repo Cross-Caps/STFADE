@@ -50,7 +50,7 @@
   <h5 align="centre">
   
   <p> Low rank spectro-temporal decoupling implementation in this project </p>
-   <img src="https://github.com/vaibhav016/STFADE/blob/main/LRCNN.png" width="550" height="300" />
+   <img src="https://github.com/Cross-Caps/STFADE/blob/vaibhav/LRCNN.png" width="550" height="300" />
   
   </h5>
     
@@ -62,11 +62,6 @@ git clone https://github.com/Cross-Caps/STFADE.git
 cd STFADE
 python setup.py build
 python setup.py install
-```
-### Running in a container
-
-```bash
-docker-compose up -d
 ```
 
 ## Setup training and testing
@@ -87,20 +82,20 @@ See [augmentations](./tensorflow_asr/augmentations/README.md)
 
 ## Training & Testing Tutorial
 
-1. Define config YAML file, see the `config.yml` files in the [example folder](./contextnet) for reference (you can copy and modify values such as parameters, paths, etc.. to match your local machine configuration)
+1. Define config YAML file, see the `config.yml` files in the [contextnent folder](./contextnet) for reference (you can copy and modify values such as parameters, paths, etc.. to match your local machine configuration)
 2. Download your corpus (a.k.a datasets) and run `download_links.sh`[scripts folder](./scripts) to download files  For more detail, see [datasets](./tensorflow_asr/datasets/README.md). **Note:** Make sure your data contain only characters in your language, for example, english has `a` to `z` and `'`. **Do not use `cache` if your dataset size is not fit in the RAM**.
 3. [Optional] Generate TFRecords to use `tf.data.TFRecordDataset` for better performance by using the script [create_tfrecords.py](./scripts/create_tfrecords.py)
 4. Create vocabulary file (characters or subwords/wordpieces) by defining `language.characters`, using the scripts [generate_vocab_subwords.py](./scripts/generate_vocab_subwords.py) or [generate_vocab_sentencepiece.py](./scripts/generate_vocab_sentencepiece.py). There're predefined ones in [vocabularies](./vocabularies)
 5. [Optional] Generate metadata file for your dataset by using script [generate_metadata.py](./scripts/generate_metadata.py). This metadata file contains maximum lengths calculated with your `config.yml` and total number of elements in each dataset, for static shape training and precalculated steps per epoch.
-6. run `create_transcripts_from_data.sh` from [scrpts folder](./scripts) to generate .tsv files(the format in which the input is given is .tsv)
-6. For training, see `train.py` files in the [example folder](./contextnet) to see the options
-7. For testing, see `test.py` files in the [example folder](./contextnet) to see the options. 
+6. run `create_transcripts_from_data.sh` from [scripts folder](./scripts) to generate .tsv files(the format in which the input is given is .tsv)
+6. For training, see `train.py` files in the [contextnet folder](./contextnet) to see the options
+7. For testing, see `test.py` files in the [contextnet folder](./contextnet) to see the options. 
 
 
 ## Loss landscape visualisation and gradient attribution
 
 For visualisations, we have two kinds of scripts.
-`cd examples/contextnet/contextnet_visualisation`
+`cd contextnet/contextnet_visualisation`
 1) for loss landscapes, cd into context_visualisation/loss_landscape_visualisation.
     1) run generate_lists.py(This generates the loss and accuracy lists)
     2) now run plot_loss.py (From those lists, images are drawn both 2d and 3d)
@@ -112,20 +107,20 @@ For visualisations, we have two kinds of scripts.
     
     
     
-### Gradient_Visualisation_Notebook [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/vaibhav016/STFADE/blob/main/contextnet/contextnet_visualisation/gradient_visualisation/gradient_visualisation.ipynb)
-### Loss Lists Notebook [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/vaibhav016/STFADE/blob/main/contextnet/contextnet_visualisation/loss_landscape_visualisation/generate_loss_landscape.ipynb)
+### Gradient_Visualisation_Notebook [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/vaibhav016/STFADE/blob/vaibhav/contextnet/contextnet_visualisation/gradient_visualisation/gradient_visualisation.ipynb)
+### Loss Lists Notebook [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/vaibhav016/STFADE/blob/vaibhav/contextnet/contextnet_visualisation/loss_landscape_visualisation/generate_loss_landscape.ipynb)
 
 ### For loss landscape, go to [drive](https://drive.google.com/file/d/1rYCHvoJGesCQZhpyuLAjNDNfQkbyE7nR/view?usp=sharing)
 ### For gradient attribution, go to [drive](https://drive.google.com/file/d/1Smw05OEhrptbitom-lOUh7E9LjjAb-cu/view?usp=sharing)
 
 <h4 align="centre"> 
     <p align="centre" > gradients attribution</p>
-    <img src="https://github.com/vaibhav016/STFADE/blob/main/gradient.gif" width="600" height="400" />
+    <img src="https://github.com/vaibhav016/STFADE/blob/vaibhav/gradient.gif" width="600" height="400" />
 </h4>
 
 <h4 align="centre"> 
     <p align="centre">  loss landscape </p> 
-    <img src="https://github.com/vaibhav016/STFADE/blob/main/loss.gif" width="600" height="400" />
+    <img src="https://github.com/vaibhav016/STFADE/blob/vaibhav/loss.gif" width="600" height="400" />
 </h4>
 
 
