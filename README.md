@@ -110,7 +110,7 @@ For visualisations, we have two kinds of scripts.
 ### Loss Lists Notebook [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/Cross-Caps/STFADE/blob/main/contextnet/contextnet_visualisation/loss_landscape_visualisation/generate_loss_landscape.ipynb)
 
 ### For loss landscape, go to [loss video](https://github.com/Cross-Caps/STFADE/blob/main/contextnet/contextnet_visualisation/loss_landscape_visualisation/video/loss_video.mp4)
-### For gradient attribution, go to [gradient images training](https://github.com/Cross-Caps/STFADE/blob/main/contextnet/contextnet_visualisation/gradient_visualisation/Testing_gradients.png)
+### For gradient attribution, go to [gradient images testing](https://github.com/Cross-Caps/STFADE/blob/main/contextnet/contextnet_visualisation/gradient_visualisation/Testing_gradients.png)
 
 <h4 align="centre"> 
     <p align="centre" > gradients attribution</p>
