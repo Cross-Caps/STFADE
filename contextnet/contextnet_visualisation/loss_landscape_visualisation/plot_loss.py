@@ -172,17 +172,18 @@ global_max, global_min = obtain_model_specific_normalisation(models_in_paper)
 figs_directory_abs = make_directories(models_in_paper)
 
 for i, file in enumerate(tqdm(sorted(os.listdir(models_in_paper)))):
-    break
     if file == ".DS_Store":
         continue
     model_file_list = os.path.join(models_in_paper, file)
-    if not os.path.isdir(model_file_list):
+    if os.path.isdir(model_file_list):
         continue
     print("file to be opened for proecessing ", )
     with open(model_file_list, "rb") as model_file:
         x_temp = pickle.load(model_file)
 
     loss_list = x_temp['loss_list'][0]
+    if file =="04-cn-wave.pkl":
+        loss_list = loss_list*10
     acc_list_greedy_char = x_temp['greedy_char'][0]
     acc_list_greedy_wer = x_temp['greedy_wer'][0]
     acc_list_beam_wer = x_temp['beam_wer'][0]
@@ -194,7 +195,7 @@ for i, file in enumerate(tqdm(sorted(os.listdir(models_in_paper)))):
 figures_working_dir = os.path.join(models_in_paper, "figs_normalise")
 video_directory = os.path.join(os.getcwd(), "video")
 try:
-    mkdir(video_directory)
+    os.mkdir(video_directory)
     print("video dir created successfully", video_directory)
 except:
     print("folder already exists")
@@ -209,6 +210,8 @@ img_array = []
 for filename1, filename2 in zip(sorted(glob.glob(fname2)), sorted(glob.glob(fname1))):
     print(filename1)
     print(filename2)
+    title = filename1.split('/')[-1].split('.')[0]
+    print(title)
 
     image1 = cv2.imread(filename1)
     image2 = cv2.imread(filename2)
@@ -237,7 +240,7 @@ for filename1, filename2 in zip(sorted(glob.glob(fname2)), sorted(glob.glob(fnam
     thickness = 1
 
     # Using cv2.putText() method
-    image = cv2.putText(vis, 'Epoch ' + str(index), org, font,
+    image = cv2.putText(vis, title, org, font,
                         fontScale, color, thickness, cv2.LINE_4)
 
     img_array.append(image)
