@@ -53,7 +53,6 @@
    <img src="https://github.com/Cross-Caps/STFADE/blob/vaibhav/LRCNN.png" width="550" height="300" />
   
   </h5>
-    
 
 ### Installing from source
 
@@ -107,20 +106,20 @@ For visualisations, we have two kinds of scripts.
     
     
     
-### Gradient_Visualisation_Notebook [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/Cross-Caps/STFADE/vaibhav/contextnet/contextnet_visualisation/gradient_visualisation/gradient_visualisation.ipynb)
-### Loss Lists Notebook [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/Cross-Caps/STFADE/vaibhav/contextnet/contextnet_visualisation/loss_landscape_visualisation/generate_loss_landscape.ipynb)
+### Gradient_Visualisation_Notebook [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/Cross-Caps/STFADE/blob/f03fa61e2258ae763a73cc8815cd759e44658db7/contextnet/contextnet_visualisation/gradient_visualisation/gradient_visualisation.ipynb)
+### Loss Lists Notebook [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/Cross-Caps/STFADE/blob/f03fa61e2258ae763a73cc8815cd759e44658db7/contextnet/contextnet_visualisation/loss_landscape_visualisation/generate_loss_landscape.ipynb)
 
 ### For loss landscape, go to [drive](https://drive.google.com/file/d/1rYCHvoJGesCQZhpyuLAjNDNfQkbyE7nR/view?usp=sharing)
 ### For gradient attribution, go to [drive](https://drive.google.com/file/d/1Smw05OEhrptbitom-lOUh7E9LjjAb-cu/view?usp=sharing)
 
 <h4 align="centre"> 
     <p align="centre" > gradients attribution</p>
-    <img src="https://github.com/vaibhav016/STFADE/blob/vaibhav/gradient.gif" width="600" height="400" />
+    <img src="https://github.com/Cross-Caps/STFADE/blob/vaibhav/gradient.gif" width="600" height="400" />
 </h4>
 
 <h4 align="centre"> 
     <p align="centre">  loss landscape </p> 
-    <img src="https://github.com/vaibhav016/STFADE/blob/vaibhav/loss.gif" width="600" height="400" />
+    <img src="https://github.com/Cross-Caps/STFADE/blob/vaibhav/loss.gif" width="600" height="400" />
 </h4>
 
 
