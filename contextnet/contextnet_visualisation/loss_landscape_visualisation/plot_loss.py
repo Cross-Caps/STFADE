@@ -1,20 +1,7 @@
-# Copyright 2021 Vaibhav Singh (@vaibhav016)
-# Copyright 2021 Dr Vinayak Abrol (_)
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
 import os
 import pickle
+import glob
+import cv2
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -31,8 +18,7 @@ ycoordinates = np.linspace(small_range, large_range, num=number_of_points)
 
 xcoord_mesh, ycoord_mesh = np.meshgrid(xcoordinates, ycoordinates)
 
-loss_lists_directory = os.path.join(os.getcwd(), "loss_lists")
-
+models_in_paper = "/Users/vaibhavsingh/Desktop/STFADE/contextnet/contextnet_visualisation/loss_landscape_visualisation/models_used_in_paper"
 
 def plot_fig(loss_list, log_=False):
     if log_ == True:
@@ -68,7 +54,7 @@ def plot_fig(loss_list, log_=False):
                                       zerolinecolor="white", tick0=1, dtick=d, title_font_family="Courier New")),
                            camera=dict(eye=dict(x=2, y=5, z=1.5))),
 
-                       margin=dict(l=30, r=10, b=20, t=10),
+                         margin=dict(l=30, r=10, b=20, t=10),
                        width=500, height=500)
     fig = go.Figure(data=data, layout=layout)
     if log_:
@@ -79,14 +65,15 @@ def plot_fig(loss_list, log_=False):
     fig.update_layout(scene=dict(
         xaxis_title='λ',
         yaxis_title='η',
-        zaxis_title=z_axis_title), )
+        zaxis_title=z_axis_title),)
+    # fig.update_traces(showscale=False)
 
     fig.update_xaxes(title_font_family="Courier New")
     fig.update_yaxes(title_font_family="Courier New")
     fig.update_layout(scene_aspectmode='manual', scene_aspectratio=dict(x=1, y=1, z=3))
 
+    # fig.show()
     return fig
-
 
 def create_viz(loss_list, acc_list, figure_directory, filename, title="none"):
     print(filename)
@@ -129,16 +116,16 @@ def create_viz(loss_list, acc_list, figure_directory, filename, title="none"):
     plt.yticks(fontsize=8, fontname="Courier New")
     plt.savefig(figure_directory + "/log_contour_color/" + filename + "LogScale.png")
 
+
     fig_loss_only = plot_fig(loss_list)
     fig_loss_log = plot_fig(loss_list, log_=True)
 
     fig_loss_only.write_image(figure_directory + "/loss_accuracy/" + filename + "Loss_Accuracy.png")
     fig_loss_log.write_image(figure_directory + "/log_loss_accuracy/" + filename + "Log_Loss_Accuracy.png")
 
-
-def make_directories():
-    current_working_directory_abs = os.getcwd()
-    figs_directory_abs = os.path.join(current_working_directory_abs, "figs")
+def make_directories(a):
+    current_working_directory_abs = a
+    figs_directory_abs = os.path.join(current_working_directory_abs, "figs_normalise")
     try:
         os.mkdir(figs_directory_abs)
         os.mkdir(os.path.join(figs_directory_abs, "log_contour"))
@@ -147,39 +134,124 @@ def make_directories():
         os.mkdir(os.path.join(figs_directory_abs, "log_loss_accuracy"))
         os.mkdir(os.path.join(figs_directory_abs, "original_contour"))
         os.mkdir(os.path.join(figs_directory_abs, "original_contour_color"))
-        print(os.getcwd())
+        print("directories made successfully!!!!!!", os.getcwd())
     except Exception as e:
         print("-------------Figures directory already exists-----------------")
         print("--------------The contents will be over-ridden-------------------")
         return figs_directory_abs
     return figs_directory_abs
 
-
 def normalize(loss_list, global_min, global_max):
     max_n = global_max
     min_n = global_min
-    loss_list = (loss_list - min_n) / (max_n - min_n)
+    loss_list  = (loss_list - min_n)/(max_n-min_n)
     # print(loss_list)
     return loss_list
 
-figs_directory_abs = make_directories()
+def obtain_model_specific_normalisation(loss_lists_directory):
+    global_max = -1
+    global_min = 1000000
+    for i, f in enumerate(tqdm(sorted(os.listdir(loss_lists_directory)))):
+        if f == ".DS_Store":
+            continue
+        ff = os.path.join(loss_lists_directory, f)
+        if os.path.isdir(ff):
+            continue
+        print("For normalisaiton filename is  ", ff)
+        with open(ff, "rb") as model_file:
+            x_temp = pickle.load(model_file)
 
-def plot_loss_landscape(figs_directory_abs):
-    for file in tqdm(sorted(os.listdir(loss_lists_directory))):
-        filename = os.path.join(loss_lists_directory, file)
-        print("filenmes ", filename)
-        with open(filename, "rb") as f:
-            x_temp = pickle.load(f)
-        file = file.split('.')[0]
         loss_list = x_temp['loss_list'][0]
-        acc_list_greedy_char = x_temp['greedy_char'][0]
-        acc_list_greedy_wer = x_temp['greedy_wer'][0]
-        acc_list_beam_wer = x_temp['beam_wer'][0]
-        acc_list_beam_char = x_temp['beam_char'][0]
-        acc_list = acc_list_beam_char
+        global_max = max(global_max, loss_list.max())
+        global_min = min(global_min, loss_list.min())
 
-        create_viz(loss_list, acc_list_beam_char, figs_directory_abs, file)
+    print("the global minima and maxima is ", global_min, global_max)
+    return global_max, global_min
+
+global_max, global_min = obtain_model_specific_normalisation(models_in_paper)
+figs_directory_abs = make_directories(models_in_paper)
+
+for i, file in enumerate(tqdm(sorted(os.listdir(models_in_paper)))):
+    break
+    if file == ".DS_Store":
+        continue
+    model_file_list = os.path.join(models_in_paper, file)
+    if not os.path.isdir(model_file_list):
+        continue
+    print("file to be opened for proecessing ", )
+    with open(model_file_list, "rb") as model_file:
+        x_temp = pickle.load(model_file)
+
+    loss_list = x_temp['loss_list'][0]
+    acc_list_greedy_char = x_temp['greedy_char'][0]
+    acc_list_greedy_wer = x_temp['greedy_wer'][0]
+    acc_list_beam_wer = x_temp['beam_wer'][0]
+    acc_list_beam_char = x_temp['beam_char'][0]
+    acc_list = acc_list_beam_char
+    loss_list = normalize(loss_list, global_min, global_max)
+    create_viz(loss_list, acc_list_beam_char, figs_directory_abs, file)
+
+figures_working_dir = os.path.join(models_in_paper, "figs_normalise")
+video_directory = os.path.join(os.getcwd(), "video")
+try:
+    mkdir(video_directory)
+    print("video dir created successfully", video_directory)
+except:
+    print("folder already exists")
+    print(video_directory)
+fname1 = figures_working_dir+'/loss_accuracy/*.png'
+fname2 = figures_working_dir+'/original_contour/*.png'
+
+index = 1
+
+size = (10,10)
+img_array = []
+for filename1, filename2 in zip(sorted(glob.glob(fname2)), sorted(glob.glob(fname1))):
+    print(filename1)
+    print(filename2)
+
+    image1 = cv2.imread(filename1)
+    image2 = cv2.imread(filename2)
+    height, width, layers = image1.shape
+    size = (width, height)
+    print(size)
+    height, width, layers = image2.shape
+    size = (width, height)
+    print(size)
+
+    vis = cv2.hconcat([image1, image2])
+    height, width, layers = vis.shape
+    size = (width, height)
+
+    font = cv2.QT_FONT_NORMAL
+    # org
+    org = (460, 28)
+
+    # fontScale
+    fontScale = 0.8
+
+    # Blue color in BGR
+    color = (0, 0, 0)
+
+    # Line thickness of 2 px
+    thickness = 1
+
+    # Using cv2.putText() method
+    image = cv2.putText(vis, 'Epoch ' + str(index), org, font,
+                        fontScale, color, thickness, cv2.LINE_4)
+
+    img_array.append(image)
+    index = index + 1
+
+filename = video_directory + "/loss_video.mp4"
+print(filename)
+out = cv2.VideoWriter(filename, cv2.VideoWriter_fourcc(*'mp4v'), 1, size)
+
+for i in range(len(img_array)):
+    out.write(img_array[i])
+
+out.release()
 
 
-if __name__ == '__main__':
-    plot_loss_landscape(figs_directory_abs)
+
+
