@@ -44,7 +44,7 @@
 
 - **ContextNet** (Reference: [http://arxiv.org/abs/2005.03191](http://arxiv.org/abs/2005.03191))
   See [examples/contextnet](./contextnet)
-- **Raw Wwaveform Based CNN Through LOW-RANK Spectro-Temporal Decoupling ** (Reference: [http://publications.idiap.ch/downloads/reports/2019/Abrol_Idiap-RR-11-2019.pdf](http://publications.idiap.ch/downloads/reports/2019/Abrol_Idiap-RR-11-2019.pdf))
+- **Raw Wwaveform Based CNN Through LOW-RANK Spectro-Temporal Decoupling** (Reference: [http://publications.idiap.ch/downloads/reports/2019/Abrol_Idiap-RR-11-2019.pdf](http://publications.idiap.ch/downloads/reports/2019/Abrol_Idiap-RR-11-2019.pdf))
   See [tensorflow_asr/models/encoders](./tensorflow_asr/models/encoders)
   
   <h5 align="centre">
@@ -107,8 +107,8 @@ For visualisations, we have two kinds of scripts.
     
     
     
-### Gradient_Visualisation_Notebook [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/vaibhav016/STFADE/blob/vaibhav/contextnet/contextnet_visualisation/gradient_visualisation/gradient_visualisation.ipynb)
-### Loss Lists Notebook [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/vaibhav016/STFADE/blob/vaibhav/contextnet/contextnet_visualisation/loss_landscape_visualisation/generate_loss_landscape.ipynb)
+### Gradient_Visualisation_Notebook [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/Cross-Caps/STFADE/vaibhav/contextnet/contextnet_visualisation/gradient_visualisation/gradient_visualisation.ipynb)
+### Loss Lists Notebook [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/Cross-Caps/STFADE/vaibhav/contextnet/contextnet_visualisation/loss_landscape_visualisation/generate_loss_landscape.ipynb)
 
 ### For loss landscape, go to [drive](https://drive.google.com/file/d/1rYCHvoJGesCQZhpyuLAjNDNfQkbyE7nR/view?usp=sharing)
 ### For gradient attribution, go to [drive](https://drive.google.com/file/d/1Smw05OEhrptbitom-lOUh7E9LjjAb-cu/view?usp=sharing)
