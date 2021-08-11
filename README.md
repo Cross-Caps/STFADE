@@ -47,16 +47,12 @@
 ### Publications
 
 - **ContextNet** (Reference: [http://arxiv.org/abs/2005.03191](http://arxiv.org/abs/2005.03191))
-  See [contextnet](./contextnet)
-- **Raw Wwaveform Based CNN Through LOW-RANK Spectro-Temporal Decoupling** ([Reference](http://publications.idiap.ch/downloads/reports/2019/Abrol_Idiap-RR-11-2019.pdf))
+- **Raw Waveform Based CNN Through Low-Rank Spectro-Temporal Decoupling** ([Reference](http://publications.idiap.ch/downloads/reports/2019/Abrol_Idiap-RR-11-2019.pdf))
 
-- See [tensorflow_asr/models/encoders](./tensorflow_asr/models/encoders)
   
   <h5 align="centre">
-  
   <p> Low rank spectro-temporal decoupling implementation in this project </p>
    <img src="https://github.com/Cross-Caps/STFADE/blob/main/Plots%20in%20Paper/LRCNN.png" width="550" height="300" />
-  
   </h5>
 
 ### Installation
