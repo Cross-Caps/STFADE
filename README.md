@@ -16,7 +16,7 @@
 
 <h4 align="centre"> 
     <p align="centre">  Gradient attribution for different models </p> 
-    <img src="https://github.com/Cross-Caps/STFADE/blob/main/Plots%20in%20Paper/Gradient%20Maps/gifs/grads.gif" width="600" height="300" />
+    <img src="https://github.com/Cross-Caps/STFADE/blob/main/Plots%20in%20Paper/Gradient%20Maps/gifs/grads.gif" width="700" height="300" />
 </h4>
 
 
