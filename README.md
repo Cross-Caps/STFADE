@@ -46,7 +46,7 @@
 
 ### Publications
 
-- **ContextNet** (Reference: [http://arxiv.org/abs/2005.03191](http://arxiv.org/abs/2005.03191))
+- **ContextNet** ([Reference](http://arxiv.org/abs/2005.03191))
 - **Raw Waveform Based CNN Through Low-Rank Spectro-Temporal Decoupling** ([Reference](http://publications.idiap.ch/downloads/reports/2019/Abrol_Idiap-RR-11-2019.pdf))
 
   
