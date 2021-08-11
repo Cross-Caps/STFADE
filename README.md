@@ -11,12 +11,12 @@
 
 <h4 align="centre"> 
     <p align="centre" > Loss Landscapes of different models at a glance</p>
-    <img src="https://github.com/Cross-Caps/STFADE/blob/main/Plots%20in%20paper/Loss%20Landscapes/gifs/loss.gif" width="300" height="300" >
+    <img src="https://github.com/Cross-Caps/STFADE/blob/main/Plots%20in%20Paper/Loss%20Landscapes/gifs/loss.gif" width="300" height="300" />
 </h4>
 
 <h4 align="centre"> 
     <p align="centre">  Gradient attribution for different models </p> 
-    <img src="https://github.com/Cross-Caps/STFADE/blob/main/Plots%20in%20paper/Gradient%20Maps/gifs/grads.gif" width="600" height="300" >
+    <img src="https://github.com/Cross-Caps/STFADE/blob/main/Plots%20in%20Paper/Gradient%20Maps/gifs/grads.gif" width="600" height="300" />
 </h4>
 
 
@@ -58,7 +58,7 @@
   <h5 align="centre">
   
   <p> Low rank spectro-temporal decoupling implementation in this project </p>
-   <img src="https://github.com/Cross-Caps/STFADE/blob/main/Plots%20in%20paper/LRCNN.png" width="550" height="300" />
+   <img src="https://github.com/Cross-Caps/STFADE/blob/main/Plots%20in%20Paper/LRCNN.png" width="550" height="300" />
   
   </h5>
 
@@ -91,7 +91,7 @@ python setup.py install
         python video_create.py
             
     ##### Loss Lists Notebook [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/Cross-Caps/STFADE/blob/main/contextnet/contextnet_visualisation/loss_landscape_visualisation/generate_loss_landscape.ipynb)
-    ##### For loss landscape, go to [loss video](https://github.com/Cross-Caps/STFADE/tree/main/Plots%20in%20paper/Loss%20Landscapes)
+    ##### For loss landscape, go to [loss video](https://github.com/Cross-Caps/STFADE/tree/main/Plots%20in%20Paper/Loss%20Landscapes)
 
 2) ###For gradient visualisation
 
@@ -101,7 +101,7 @@ python setup.py install
         python video_create.py
     
     ##### Gradient_Visualisation_Notebook [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/Cross-Caps/STFADE/blob/main/contextnet/contextnet_visualisation/gradient_visualisation/gradient_visualisation.ipynb)
-    ##### For gradient attribution, go to [gradients videos](https://github.com/Cross-Caps/STFADE/tree/main/Plots%20in%20paper/Gradients)
+    ##### For gradient attribution, go to [gradients videos](https://github.com/Cross-Caps/STFADE/tree/main/Plots%20in%20Paper/Gradient%20Map)
 
 
 
