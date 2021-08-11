@@ -144,7 +144,7 @@ def make_videos_from_images(directory_to_save_video):
         print(size)
         img_array.append(image1)
 
-    out = cv2.VideoWriter(directory_to_save_video + "/gradient_vis.avi", cv2.VideoWriter_fourcc(*'DIVX'), 1, size)
+    out = cv2.VideoWriter(directory_to_save_video + "/gradient_vis.mp4", cv2.VideoWriter_fourcc(*'mp4v'), 1, size)
 
     for i in range(len(img_array)):
         out.write(img_array[i])

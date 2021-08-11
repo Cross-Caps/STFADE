@@ -12,6 +12,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
 import argparse
 import math
 import os
@@ -33,10 +34,12 @@ from tensorflow_asr.gradient_visualisation.plotting_utils import make_directorie
 
 
 def get_weights(net):
+    # returns the weights of the encoder(the first layer)
     return net.layers[0].get_weights()
 
 
 def obtain_direction(copy_of_the_weights):
+    # Generates random direction with dimensions same as those of encoder filters.
     direction1 = []
     for w in copy_of_the_weights:
         if len(w.shape) == 3:  # check for 3D tensor  or 1d-conv cnn layer  ---- this might be 2D tensor in case of low rank/depthwise seprable tensor
@@ -56,19 +59,20 @@ def obtain_direction(copy_of_the_weights):
     return direction1
 
 
+
+
 tf.keras.backend.clear_session()
 env_util.setup_environment()
-
-DEFAULT_YAML = "/Users/vaibhavsingh/Desktop/STFADE/contextnet/config.yml"
-
-tf.config.optimizer.set_experimental_options({"auto_mixed_precision": False})
-strategy = env_util.setup_strategy([0])
-
+DEFAULT_YAML = "/mnt/STFADE/contextnet/config.yml"
 config = Config(DEFAULT_YAML)
 parser = argparse.ArgumentParser(prog=" Compute Loss Lists")
 parser.add_argument("--model_list_folder", "-f", type=str, default=config.learning_config.running_config.checkpoint_directory,
                     help="gives full path to the saved models")
 args = parser.parse_args()
+
+tf.config.optimizer.set_experimental_options({"auto_mixed_precision": False})
+strategy = env_util.setup_strategy([0])
+
 
 speech_featurizer = TFSpeechFeaturizer(config.speech_config)
 text_featurizer = CharFeaturizer(config.decoder_config)
@@ -80,7 +84,6 @@ test_dataset = ASRSliceDataset(
     **vars(config.learning_config.test_dataset_config)
 )
 batch_size = config.learning_config.running_config.batch_size
-
 test_data_loader = test_dataset.create(batch_size)
 
 number_of_points = 9

@@ -1,21 +1,29 @@
 <h1 align="center">
-<p>STFADE :snowflake:</p>
+<p>STFADE :microphone:</p>
 <p align="center">
 <img alt="GitHub" src="https://img.shields.io/github/license/cross-caps/AFLI?color=green&logo=GNU&logoColor=green">
-<img alt="python" src="https://img.shields.io/badge/python-%3E%3D3.6-blue?logo=python">
-<img alt="tensorflow" src="https://img.shields.io/badge/tensorflow-%3E%3D2.1.0-orange?logo=tensorflow">
+<img alt="python" src="https://img.shields.io/badge/python-%3E%3D3.8-blue?logo=python">
+<img alt="tensorflow" src="https://img.shields.io/badge/tensorflow-%3D2.5.0-orange?logo=tensorflow">
 <img alt="PyPI" src="https://img.shields.io/badge/release-v1.0-brightgreen?logo=apache&logoColor=brightgreen">
 </p>
 </h1>
 
+<style>
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+
 <h4 align="centre"> 
     <p align="centre" > Loss Landscapes of different models at a glance</p>
-    <img src="https://github.com/Cross-Caps/STFADE/blob/main/Plots%20in%20paper/Loss%20Landscapes/gifs/loss.gif" width="400" height="400" />
+    <img src="https://github.com/Cross-Caps/STFADE/blob/main/Plots%20in%20paper/Loss%20Landscapes/gifs/loss.gif" style="width:50%;">
 </h4>
 
 <h4 align="centre"> 
     <p align="centre">  Gradient attribution for different models </p> 
-    <img src="https://github.com/Cross-Caps/STFADE/blob/main/Plots%20in%20paper/Gradient%20Maps/gifs/grads.gif" width="800" height="400" />
+    <img src="https://github.com/Cross-Caps/STFADE/blob/main/Plots%20in%20paper/Gradient%20Maps/gifs/grads.gif" style="width:50%;" >
 </h4>
 
 
@@ -37,15 +45,10 @@
 - [Publications](#publications)
 - [Installation](#installation)
   - [Installing from source](#installing-from-source)
-  - [Running in a container](#running-in-a-container)
-- [Setup training and testing](#setup-training-and-testing)
-- [Features Extraction](#features-extraction)
-- [Augmentations](#augmentations)
-- [Training & Testing Tutorial](#training--testing-tutorial)
+- [Training & Testing Steps](#training--testing-steps)
 - [Loss landscape visualisation and gradient attribution](#loss-landscape-visualisation-and-gradient-attribution)
   - [Gradient_Visualisation_Notebook](#gradient-visualisation-notebook)
   - [Loss Lists Notebook](#loss-lists-notebook)
-- [English Dataset](#english)
 - [References & Credits](#references--credits)
 - [Contact](#contact)
 
@@ -55,8 +58,9 @@
 
 - **ContextNet** (Reference: [http://arxiv.org/abs/2005.03191](http://arxiv.org/abs/2005.03191))
   See [examples/contextnet](./contextnet)
-- **Raw Wwaveform Based CNN Through LOW-RANK Spectro-Temporal Decoupling** (Reference: [http://publications.idiap.ch/downloads/reports/2019/Abrol_Idiap-RR-11-2019.pdf](http://publications.idiap.ch/downloads/reports/2019/Abrol_Idiap-RR-11-2019.pdf))
-  See [tensorflow_asr/models/encoders](./tensorflow_asr/models/encoders)
+- **Raw Wwaveform Based CNN Through LOW-RANK Spectro-Temporal Decoupling** ([Reference](http://publications.idiap.ch/downloads/reports/2019/Abrol_Idiap-RR-11-2019.pdf))
+
+- See [tensorflow_asr/models/encoders](./tensorflow_asr/models/encoders)
   
   <h5 align="centre">
   
@@ -74,62 +78,39 @@ python setup.py build
 python setup.py install
 ```
 
-## Setup training and testing
 
-- For _mixed precision training_, use flag `--mxp` when running python scripts from [examples](./examples)
-
-- For _enabling XLA_, run `TF_XLA_FLAGS=--tf_xla_auto_jit=2 python3 $path_to_py_script`)
-
-- For _hiding warnings_, run `export TF_CPP_MIN_LOG_LEVEL=2` before running any examples
-
-## Features Extraction
-
-See [features_extraction](./tensorflow_asr/featurizers/README.md)
-
-## Augmentations
-
-See [augmentations](./tensorflow_asr/augmentations/README.md)
-
-## Training & Testing Tutorial
+## Training & Testing Steps
 
 1. Define config YAML file, see the `config.yml` files in the [contextnent folder](./contextnet) for reference (you can copy and modify values such as parameters, paths, etc.. to match your local machine configuration)
 2. Download your corpus (a.k.a datasets) and run `download_links.sh`[scripts folder](./scripts) to download files  For more detail, see [datasets](./tensorflow_asr/datasets/README.md). **Note:** Make sure your data contain only characters in your language, for example, english has `a` to `z` and `'`. **Do not use `cache` if your dataset size is not fit in the RAM**.
-3. [Optional] Generate TFRecords to use `tf.data.TFRecordDataset` for better performance by using the script [create_tfrecords.py](./scripts/create_tfrecords.py)
-4. Create vocabulary file (characters or subwords/wordpieces) by defining `language.characters`, using the scripts [generate_vocab_subwords.py](./scripts/generate_vocab_subwords.py) or [generate_vocab_sentencepiece.py](./scripts/generate_vocab_sentencepiece.py). There're predefined ones in [vocabularies](./vocabularies)
-5. [Optional] Generate metadata file for your dataset by using script [generate_metadata.py](./scripts/generate_metadata.py). This metadata file contains maximum lengths calculated with your `config.yml` and total number of elements in each dataset, for static shape training and precalculated steps per epoch.
-6. run `create_transcripts_from_data.sh` from [scripts folder](./scripts) to generate .tsv files(the format in which the input is given is .tsv)
-6. For training, see `train.py` files in the [contextnet folder](./contextnet) to see the options
-7. For testing, see `test.py` files in the [contextnet folder](./contextnet) to see the options. 
+3. run `create_transcripts_from_data.sh` from [scripts folder](./scripts) to generate .tsv files(the format in which the input is given is .tsv). [Librispeech](https://www.openslr.org/12) has been used in this work.
+4. For training, see `train.py` files in the [contextnet folder](./contextnet) to see the options
+5. For testing, see `test.py` files in the [contextnet folder](./contextnet) to see the options. 
 
 
-## Loss landscape visualisation and gradient attribution
+## Visualisation: Loss Landscapes and Gradient Maps
 
-For visualisations, we have two kinds of scripts.
-`cd contextnet/contextnet_visualisation`
-1) for loss landscapes, cd into context_visualisation/loss_landscape_visualisation.
-    1) run generate_lists.py(This generates the loss and accuracy lists)
-    2) now run plot_loss.py (From those lists, images are drawn both 2d and 3d)
-    3) now run video_create.py(It sews all the images into a single video)
-2) For gradient visualisation, 
-    1) run integrated_grad_vis.py, which will generate the integrated gradients for all the trained models
-    2) then run plot_gradients.py
-    3) Finally run video_create.py
+1) ###Loss Landscapes 
+        
+        cd contextnet/contextnet_visualisation/loss_landscape_visualisation
+        python generate_lists.py   
+        python plot_loss.py
+        python video_create.py
+            
+    ##### Loss Lists Notebook [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/Cross-Caps/STFADE/blob/main/contextnet/contextnet_visualisation/loss_landscape_visualisation/generate_loss_landscape.ipynb)
+    ##### For loss landscape, go to [loss video](https://github.com/Cross-Caps/STFADE/tree/main/Plots%20in%20paper/Loss%20Landscapes)
+
+2) ###For gradient visualisation
+
+        cd contextnet/contextnet_visualisation/gradient_visualisation
+        python integrated_grad_vis.py
+        python plot_gradients.py
+        python video_create.py
     
-    
-    
-### Gradient_Visualisation_Notebook [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/Cross-Caps/STFADE/blob/main/contextnet/contextnet_visualisation/gradient_visualisation/gradient_visualisation.ipynb)
-### Loss Lists Notebook [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/Cross-Caps/STFADE/blob/main/contextnet/contextnet_visualisation/loss_landscape_visualisation/generate_loss_landscape.ipynb)
-
-### For loss landscape, go to [loss video](https://github.com/Cross-Caps/STFADE/tree/main/Plots%20in%20paper/Loss%20Landscapes)
-### For gradient attribution, go to [gradients videos](https://github.com/Cross-Caps/STFADE/tree/main/Plots%20in%20paper/Gradients)
+    ##### Gradient_Visualisation_Notebook [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/Cross-Caps/STFADE/blob/main/contextnet/contextnet_visualisation/gradient_visualisation/gradient_visualisation.ipynb)
+    ##### For gradient attribution, go to [gradients videos](https://github.com/Cross-Caps/STFADE/tree/main/Plots%20in%20paper/Gradients)
 
 
-
-### English Dataset
-
-|   **Name**   |                             **Source**                             | **Hours** |
-| :----------: | :----------------------------------------------------------------: | :-------: |
-| LibriSpeech  |              [LibriSpeech](http://www.openslr.org/12)              |   970h    |
 
 ## References & Credits
 
@@ -141,4 +122,4 @@ For visualisations, we have two kinds of scripts.
 
 Vaibhav Singh __(vaibhav.singh@nyu.edu)__
 
-Dr Vinayak Abrol __(abrol@iiitd.ac.in)__
+Dr. Vinayak Abrol __(abrol@iiitd.ac.in)__

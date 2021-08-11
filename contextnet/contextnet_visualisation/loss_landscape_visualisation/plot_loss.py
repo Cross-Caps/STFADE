@@ -1,6 +1,8 @@
 import os
 import pickle
 import glob
+
+import argparse
 import cv2
 
 import matplotlib.pyplot as plt
@@ -8,6 +10,7 @@ import numpy as np
 
 import plotly.graph_objs as go
 from tqdm import tqdm
+from tensorflow_asr.configs.config import Config
 
 number_of_points = 9
 small_range = -1.0
@@ -18,14 +21,33 @@ ycoordinates = np.linspace(small_range, large_range, num=number_of_points)
 
 xcoord_mesh, ycoord_mesh = np.meshgrid(xcoordinates, ycoordinates)
 
-models_in_paper = "/Users/vaibhavsingh/Desktop/STFADE/contextnet/contextnet_visualisation/loss_landscape_visualisation/models_used_in_paper"
+DEFAULT_YAML = "/mnt/STFADE/contextnet/config.yml"
+config = Config(DEFAULT_YAML)
+
+parser = argparse.ArgumentParser(prog=" Plot Loss Landscape")
+
+parser.add_argument("--lower_limit_axis", "-ll", type=int, default=0,
+                    help="this is the lower limit of the plot values")
+parser.add_argument("--upper_limit_axis", "-ul", type=int, default=1,
+                    help="this is the upper limit of the plot values")
+
+parser.add_argument("--dticks", "-dt", type=float, default=0.1,
+                    help="this is the step distance between the axis")
+
+parser.add_argument("--model_list_folder", "-f", type=str, default=config.learning_config.running_config.checkpoint_directory,
+                    help="gives full path to the saved models")
+
+args = parser.parse_args()
+
 
 def plot_fig(loss_list, log_=False):
     if log_ == True:
+        args.lower_limit_axis = 3
+        args.upper_limit_axis = 12
+        args.dticks = 1
         loss_list = np.log(loss_list)
-        l, u, d = 3, 12, 1
-    else:
-        l, u, d = 0, 1, 0.1
+
+    l, u, d = args.lower_limit_axis, args.upper_limit_axis, args.dticks
 
     data = [
         go.Surface(
@@ -54,7 +76,7 @@ def plot_fig(loss_list, log_=False):
                                       zerolinecolor="white", tick0=1, dtick=d, title_font_family="Courier New")),
                            camera=dict(eye=dict(x=2, y=5, z=1.5))),
 
-                         margin=dict(l=30, r=10, b=20, t=10),
+                       margin=dict(l=30, r=10, b=20, t=10),
                        width=500, height=500)
     fig = go.Figure(data=data, layout=layout)
     if log_:
@@ -65,7 +87,7 @@ def plot_fig(loss_list, log_=False):
     fig.update_layout(scene=dict(
         xaxis_title='λ',
         yaxis_title='η',
-        zaxis_title=z_axis_title),)
+        zaxis_title=z_axis_title), )
     # fig.update_traces(showscale=False)
 
     fig.update_xaxes(title_font_family="Courier New")
@@ -74,6 +96,7 @@ def plot_fig(loss_list, log_=False):
 
     # fig.show()
     return fig
+
 
 def create_viz(loss_list, acc_list, figure_directory, filename, title="none"):
     print(filename)
@@ -116,12 +139,12 @@ def create_viz(loss_list, acc_list, figure_directory, filename, title="none"):
     plt.yticks(fontsize=8, fontname="Courier New")
     plt.savefig(figure_directory + "/log_contour_color/" + filename + "LogScale.png")
 
-
     fig_loss_only = plot_fig(loss_list)
     fig_loss_log = plot_fig(loss_list, log_=True)
 
     fig_loss_only.write_image(figure_directory + "/loss_accuracy/" + filename + "Loss_Accuracy.png")
     fig_loss_log.write_image(figure_directory + "/log_loss_accuracy/" + filename + "Log_Loss_Accuracy.png")
+
 
 def make_directories(a):
     current_working_directory_abs = a
@@ -141,12 +164,14 @@ def make_directories(a):
         return figs_directory_abs
     return figs_directory_abs
 
+
 def normalize(loss_list, global_min, global_max):
     max_n = global_max
     min_n = global_min
-    loss_list  = (loss_list - min_n)/(max_n-min_n)
+    loss_list = (loss_list - min_n) / (max_n - min_n)
     # print(loss_list)
     return loss_list
+
 
 def obtain_model_specific_normalisation(loss_lists_directory):
     global_max = -1
@@ -168,93 +193,99 @@ def obtain_model_specific_normalisation(loss_lists_directory):
     print("the global minima and maxima is ", global_min, global_max)
     return global_max, global_min
 
-global_max, global_min = obtain_model_specific_normalisation(models_in_paper)
-figs_directory_abs = make_directories(models_in_paper)
 
-for i, file in enumerate(tqdm(sorted(os.listdir(models_in_paper)))):
-    if file == ".DS_Store":
-        continue
-    model_file_list = os.path.join(models_in_paper, file)
-    if os.path.isdir(model_file_list):
-        continue
-    print("file to be opened for proecessing ", )
-    with open(model_file_list, "rb") as model_file:
-        x_temp = pickle.load(model_file)
+def construct_plots(model_directory):
+    figs_directory_abs = make_directories(model_directory)
+    for i, file in enumerate(tqdm(sorted(os.listdir(model_directory)))):
+        if file == ".DS_Store":
+            continue
+        model_file_list = os.path.join(model_directory, file)
+        if os.path.isdir(model_file_list):
+            continue
+        print("file to be opened for proecessing ", )
+        with open(model_file_list, "rb") as model_file:
+            x_temp = pickle.load(model_file)
 
-    loss_list = x_temp['loss_list'][0]
-    if file =="04-cn-wave.pkl":
-        loss_list = loss_list*10
-    acc_list_greedy_char = x_temp['greedy_char'][0]
-    acc_list_greedy_wer = x_temp['greedy_wer'][0]
-    acc_list_beam_wer = x_temp['beam_wer'][0]
-    acc_list_beam_char = x_temp['beam_char'][0]
-    acc_list = acc_list_beam_char
-    loss_list = normalize(loss_list, global_min, global_max)
-    create_viz(loss_list, acc_list_beam_char, figs_directory_abs, file)
-
-figures_working_dir = os.path.join(models_in_paper, "figs_normalise")
-video_directory = os.path.join(os.getcwd(), "video")
-try:
-    os.mkdir(video_directory)
-    print("video dir created successfully", video_directory)
-except:
-    print("folder already exists")
-    print(video_directory)
-fname1 = figures_working_dir+'/loss_accuracy/*.png'
-fname2 = figures_working_dir+'/original_contour/*.png'
-
-index = 1
-
-size = (10,10)
-img_array = []
-for filename1, filename2 in zip(sorted(glob.glob(fname2)), sorted(glob.glob(fname1))):
-    print(filename1)
-    print(filename2)
-    title = filename1.split('/')[-1].split('.')[0]
-    print(title)
-
-    image1 = cv2.imread(filename1)
-    image2 = cv2.imread(filename2)
-    height, width, layers = image1.shape
-    size = (width, height)
-    print(size)
-    height, width, layers = image2.shape
-    size = (width, height)
-    print(size)
-
-    vis = cv2.hconcat([image1, image2])
-    height, width, layers = vis.shape
-    size = (width, height)
-
-    font = cv2.QT_FONT_NORMAL
-    # org
-    org = (460, 28)
-
-    # fontScale
-    fontScale = 0.8
-
-    # Blue color in BGR
-    color = (0, 0, 0)
-
-    # Line thickness of 2 px
-    thickness = 1
-
-    # Using cv2.putText() method
-    image = cv2.putText(vis, title, org, font,
-                        fontScale, color, thickness, cv2.LINE_4)
-
-    img_array.append(image)
-    index = index + 1
-
-filename = video_directory + "/loss_video.mp4"
-print(filename)
-out = cv2.VideoWriter(filename, cv2.VideoWriter_fourcc(*'mp4v'), 1, size)
-
-for i in range(len(img_array)):
-    out.write(img_array[i])
-
-out.release()
+        loss_list = x_temp['loss_list'][0]
+        acc_list_greedy_char = x_temp['greedy_char'][0]
+        acc_list_greedy_wer = x_temp['greedy_wer'][0]
+        acc_list_beam_wer = x_temp['beam_wer'][0]
+        acc_list_beam_char = x_temp['beam_char'][0]
+        acc_list = acc_list_beam_char
+        loss_list = normalize(loss_list, global_min, global_max)
+        create_viz(loss_list, acc_list_beam_char, figs_directory_abs, file)
 
 
+def construct_videos(model_directory):
+    figures_working_dir = os.path.join(model_directory, "figs_normalise")
+    video_directory = os.path.join(os.getcwd(), "video")
+
+    try:
+        os.mkdir(video_directory)
+        print("video dir created successfully", video_directory)
+    except:
+        print("folder already exists")
+        print(video_directory)
+    fname1 = figures_working_dir + '/loss_accuracy/*.png'
+    fname2 = figures_working_dir + '/original_contour/*.png'
+
+    index = 1
+
+    size = (10, 10)
+    img_array = []
+    for filename1, filename2 in zip(sorted(glob.glob(fname2)), sorted(glob.glob(fname1))):
+        print(filename1)
+        print(filename2)
+        title = filename1.split('/')[-1].split('.')[0]
+        print(title)
+
+        image1 = cv2.imread(filename1)
+        image2 = cv2.imread(filename2)
+        height, width, layers = image1.shape
+        size = (width, height)
+        print(size)
+        height, width, layers = image2.shape
+        size = (width, height)
+        print(size)
+
+        vis = cv2.hconcat([image1, image2])
+        height, width, layers = vis.shape
+        size = (width, height)
+
+        font = cv2.QT_FONT_NORMAL
+        # org
+        org = (460, 28)
+
+        # fontScale
+        fontScale = 0.8
+
+        # Blue color in BGR
+        color = (0, 0, 0)
+
+        # Line thickness of 2 px
+        thickness = 1
+
+        # Using cv2.putText() method
+        image = cv2.putText(vis, title, org, font,
+                            fontScale, color, thickness, cv2.LINE_4)
+
+        img_array.append(image)
+        index = index + 1
+
+    filename = video_directory + "/loss_video.mp4"
+    print(filename)
+    out = cv2.VideoWriter(filename, cv2.VideoWriter_fourcc(*'mp4v'), 1, size)
+
+    for i in range(len(img_array)):
+        out.write(img_array[i])
+
+    out.release()
 
 
+if __name__ == "main":
+    model_directory = args.model_list_folder
+
+    global_max, global_min = obtain_model_specific_normalisation(model_directory)
+
+    construct_plots(model_directory)
+    construct_videos(model_directory)

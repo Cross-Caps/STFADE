@@ -25,7 +25,7 @@ from tensorflow_asr.utils import env_util
 
 env_util.setup_environment()
 
-DEFAULT_YAML = "/Users/vaibhavsingh/Desktop/STFADE/contextnet/config.yml"
+DEFAULT_YAML = "/mnt/STFADE/contextnet/config.yml"
 
 directory_to_save_gradient_lists = make_directories(os.getcwd(), "gradient_lists")
 
@@ -174,7 +174,6 @@ for filename in tqdm(sorted(os.listdir(model_directory))):
 
         images_check.append(tf.squeeze(inputs))
 
-        print("integrated_gradients shape=========", interated_gradients.shape, random_integrated_gradients.shape)
         m = m + 1
 
     dd = {'input_image': images_check,

@@ -217,9 +217,9 @@ learning_config:
           num_masks: 1
           mask_factor: 27
     data_paths:
-      - /Users/vaibhavsingh/Desktop/STFADE/scripts/Datasets/train-clean-100/LibriSpeech/transcripts.tsv
-      - /Users/vaibhavsingh/Desktop/STFADE/scripts/Datasets/train-clean-360/LibriSpeech/transcripts.tsv
-      - /Users/vaibhavsingh/Desktop/STFADE/scripts/Datasets/train-other-500/LibriSpeech/transcripts.tsv
+      - /mnt/STFADE/scripts/Datasets/train-clean-100/LibriSpeech/transcripts.tsv
+      - /mnt/STFADE/scripts/Datasets/train-clean-360/LibriSpeech/transcripts.tsv
+      - /mnt/STFADE/scripts/Datasets/train-other-500/LibriSpeech/transcripts.tsv
     tfrecords_dir: null
     shuffle: True
     cache: False
@@ -230,8 +230,8 @@ learning_config:
   eval_dataset_config:
     use_tf: True
     data_paths:
-      - /Users/vaibhavsingh/Desktop/STFADE/scripts/Datasets/dev-clean/LibriSpeech/transcripts.tsv
-      - /Users/vaibhavsingh/Desktop/STFADE/scripts/Datasets/dev-other/LibriSpeech/transcripts.tsv
+      - /mnt/STFADE/scripts/Datasets/dev-clean/LibriSpeech/transcripts.tsv
+      - /mnt/STFADE/scripts/Datasets/dev-other/LibriSpeech/transcripts.tsv
     tfrecords_dir: null
     shuffle: False
     cache: False
@@ -242,8 +242,8 @@ learning_config:
   test_dataset_config:
     use_tf: True
     data_paths:
-       - /Users/vaibhavsingh/Desktop/STFADE/scripts/Datasets/test-clean/LibriSpeech/transcripts.tsv
-       - /Users/vaibhavsingh/Desktop/STFADE/scripts/Datasets/test-other/LibriSpeech/transcripts.tsv
+       - /mnt/STFADE/scripts/Datasets/test-clean/LibriSpeech/transcripts.tsv
+       - /mnt/STFADE/scripts/Datasets/test-other/LibriSpeech/transcripts.tsv
     tfrecords_dir: null
     shuffle: False
     cache: False
@@ -254,7 +254,7 @@ learning_config:
     gradient_dataset_vis_config:
       use_tf: True
       data_paths:
-        - /Users/vaibhavsingh/Desktop/STFADE/scripts/Datasets/gradients_vis_data/transcripts.tsv
+        - /mnt/STFADE/scripts/Datasets/gradients_vis_data/transcripts.tsv
       tfrecords_dir: null
       shuffle: False
       cache: True
@@ -271,16 +271,16 @@ learning_config:
   running_config:
     batch_size: 2
     num_epochs: 20
-    checkpoint_directory: /Users/vaibhavsingh/Desktop/STFADE/contextnet/checkpoints_lrcn
+    checkpoint_directory: /mnt/STFADE/contextnet/checkpoints_lrcn
 
     checkpoint:
-      filepath: /Users/vaibhavsingh/Desktop/STFADE/contextnet/checkpoints/model_trained_{epoch:02d}.h5
+      filepath: /mnt/STFADE/contextnet/checkpoints/model_trained_{epoch:02d}.h5
       save_best_only: True
       save_weights_only: True
       save_freq: epoch
-    states_dir: /Users/vaibhavsingh/Desktop/STFADE/contextnet/states
+    states_dir: /mnt/STFADE/contextnet/states
     tensorboard:
-      log_dir: /Users/vaibhavsingh/Desktop/STFADE/contextnet/tensorboard
+      log_dir: /mnt/STFADE/contextnet/tensorboard
       histogram_freq: 1
       write_graph: True
       write_images: True
