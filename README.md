@@ -91,7 +91,7 @@ python setup.py install
         python video_create.py
             
     ##### Loss Lists Notebook [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/Cross-Caps/STFADE/blob/main/contextnet/contextnet_visualisation/loss_landscape_visualisation/generate_loss_landscape.ipynb)
-    ##### For loss landscape, go to [loss video](https://github.com/Cross-Caps/STFADE/tree/main/Plots%20in%20Paper/Loss%20Landscapes)
+    ##### For loss landscape, go to [loss video](https://github.com/Cross-Caps/STFADE/blob/main/Plots%20in%20Paper/Loss%20Landscapes)
 
 2) ###For gradient visualisation
 
@@ -101,7 +101,7 @@ python setup.py install
         python video_create.py
     
     ##### Gradient_Visualisation_Notebook [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/Cross-Caps/STFADE/blob/main/contextnet/contextnet_visualisation/gradient_visualisation/gradient_visualisation.ipynb)
-    ##### For gradient attribution, go to [gradients videos](https://github.com/Cross-Caps/STFADE/tree/main/Plots%20in%20Paper/Gradient%20Map)
+    ##### For gradient attribution, go to [gradients videos](https://github.com/Cross-Caps/STFADE/blob/main/Plots%20in%20Paper/Gradient%20Map)
 
 
 
