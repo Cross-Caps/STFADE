@@ -8,6 +8,17 @@
 </p>
 </h1>
 
+<h4 align="centre"> 
+    <p align="centre" > Loss Landscapes of different models at a glance</p>
+    <img src="https://github.com/Cross-Caps/STFADE/blob/main/Plots%20in%20paper/Loss%20Landscapes/gifs/loss.gif" width="600" height="400" />
+</h4>
+
+<h4 align="centre"> 
+    <p align="centre">  Gradient attribution for different models </p> 
+    <img src="https://github.com/Cross-Caps/STFADE/blob/main/Plots%20in%20paper/Gradients/gifs/grads.gif" width="600" height="400" />
+</h4>
+
+
 ## What's New?
 
 - (05/1/2021) Trained vanilla Contextnet over Librispeech Dataset [http://arxiv.org/abs/2005.03191](http://arxiv.org/abs/2005.03191)
@@ -109,18 +120,9 @@ For visualisations, we have two kinds of scripts.
 ### Gradient_Visualisation_Notebook [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/Cross-Caps/STFADE/blob/main/contextnet/contextnet_visualisation/gradient_visualisation/gradient_visualisation.ipynb)
 ### Loss Lists Notebook [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/Cross-Caps/STFADE/blob/main/contextnet/contextnet_visualisation/loss_landscape_visualisation/generate_loss_landscape.ipynb)
 
-### For loss landscape, go to [loss video](https://github.com/Cross-Caps/STFADE/blob/main/contextnet/contextnet_visualisation/loss_landscape_visualisation/video/loss_video.mp4)
-### For gradient attribution, go to [gradient images testing](https://github.com/Cross-Caps/STFADE/blob/main/contextnet/contextnet_visualisation/gradient_visualisation/Testing_gradients.png)
+### For loss landscape, go to [loss video](https://github.com/Cross-Caps/STFADE/tree/main/Plots%20in%20paper/Loss%20Landscapes)
+### For gradient attribution, go to [gradients videos](https://github.com/Cross-Caps/STFADE/tree/main/Plots%20in%20paper/Gradients)
 
-<h4 align="centre"> 
-    <p align="centre" > gradients attribution</p>
-    <img src="https://github.com/Cross-Caps/STFADE/blob/vaibhav/gradient.gif" width="600" height="400" />
-</h4>
-
-<h4 align="centre"> 
-    <p align="centre">  loss landscape </p> 
-    <img src="https://github.com/Cross-Caps/STFADE/blob/vaibhav/loss.gif" width="600" height="400" />
-</h4>
 
 
 ### English Dataset
