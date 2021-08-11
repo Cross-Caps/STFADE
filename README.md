@@ -61,7 +61,7 @@
   <h5 align="centre">
   
   <p> Low rank spectro-temporal decoupling implementation in this project </p>
-   <img src="https://github.com/Cross-Caps/STFADE/blob/vaibhav/LRCNN.png" width="550" height="300" />
+   <img src="https://github.com/Cross-Caps/STFADE/blob/main/Plots%20in%20paper/LRCNN.png" width="550" height="300" />
   
   </h5>
 
