@@ -36,12 +36,9 @@
 - [What's New?](#whats-new)
 - [Table of Contents](#table-of-contents)
 - [Publications](#publications)
-- [Installation](#installation)
-  - [Installing from source](#installing-from-source)
+- [Installation](#installation)  
 - [Training & Testing Steps](#training--testing-steps)
-- [Loss landscape visualisation and gradient attribution](#loss-landscape-visualisation-and-gradient-attribution)
-  - [Gradient_Visualisation_Notebook](#gradient-visualisation-notebook)
-  - [Loss Lists Notebook](#loss-lists-notebook)
+- [Visualisation Loss Landscapes and Gradient Maps](#visualisation-loss-landscapes-and-gradient-maps)
 - [References & Credits](#references--credits)
 - [Contact](#contact)
 
@@ -62,7 +59,7 @@
   
   </h5>
 
-### Installing from source
+### Installation
 
 ```bash
 git clone https://github.com/Cross-Caps/STFADE.git
@@ -72,7 +69,7 @@ python setup.py install
 ```
 
 
-## Training & Testing Steps
+### Training & Testing Steps
 
 1. Define config YAML file, see the `config.yml` files in the [contextnent folder](./contextnet) for reference (you can copy and modify values such as parameters, paths, etc.. to match your local machine configuration)
 2. Download your corpus (a.k.a datasets) and run `download_links.sh`[scripts folder](./scripts) to download files  For more detail, see [datasets](./tensorflow_asr/datasets/README.md). **Note:** Make sure your data contain only characters in your language, for example, english has `a` to `z` and `'`. **Do not use `cache` if your dataset size is not fit in the RAM**.
@@ -81,28 +78,30 @@ python setup.py install
 5. For testing, see `test.py` files in the [contextnet folder](./contextnet) to see the options. 
 
 
-## Visualisation: Loss Landscapes and Gradient Maps
+### Visualisation Loss Landscapes and Gradient Maps     
 
- ###Loss Landscapes 
-        
+1. Loss Landscapes
+
         cd contextnet/contextnet_visualisation/loss_landscape_visualisation
         python generate_lists.py   
         python plot_loss.py
         python video_create.py
-          
-   ##### Loss Lists Notebook [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/Cross-Caps/STFADE/blob/main/contextnet/contextnet_visualisation/loss_landscape_visualisation/generate_loss_landscape.ipynb)
-   ##### For loss landscape, go to [loss video](https://github.com/Cross-Caps/STFADE/blob/main/Plots%20in%20Paper/Loss%20Landscapes)
+  
+   **Loss Lists Notebook** [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/Cross-Caps/STFADE/blob/main/contextnet/contextnet_visualisation/loss_landscape_visualisation/generate_loss_landscape.ipynb)
+   
+   **For loss landscape, go to** [loss video](https://github.com/Cross-Caps/STFADE/blob/main/Plots%20in%20Paper/Loss%20Landscapes)
 
 
- ###For gradient visualisation
+2. Gradient Maps
 
         cd contextnet/contextnet_visualisation/gradient_visualisation
         python integrated_grad_vis.py
         python plot_gradients.py
         python video_create.py
     
-   ##### Gradient_Visualisation_Notebook [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/Cross-Caps/STFADE/blob/main/contextnet/contextnet_visualisation/gradient_visualisation/gradient_visualisation.ipynb)
-   ##### For gradient attribution, go to [gradients videos](https://github.com/Cross-Caps/STFADE/blob/main/Plots%20in%20Paper/Gradient%20Map)
+    **Gradient_Visualisation_Notebook** [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/Cross-Caps/STFADE/blob/main/contextnet/contextnet_visualisation/gradient_visualisation/gradient_visualisation.ipynb)
+
+    **For gradient attribution, go to** [gradients videos](https://github.com/Cross-Caps/STFADE/blob/main/Plots%20in%20Paper/Gradient%20Map)
 
 
 
