@@ -83,7 +83,7 @@ python setup.py install
 
 ## Visualisation: Loss Landscapes and Gradient Maps
 
-###Loss Landscapes 
+ ###Loss Landscapes 
         
         cd contextnet/contextnet_visualisation/loss_landscape_visualisation
         python generate_lists.py   
@@ -94,7 +94,7 @@ python setup.py install
    ##### For loss landscape, go to [loss video](https://github.com/Cross-Caps/STFADE/blob/main/Plots%20in%20Paper/Loss%20Landscapes)
 
 
-###For gradient visualisation
+ ###For gradient visualisation
 
         cd contextnet/contextnet_visualisation/gradient_visualisation
         python integrated_grad_vis.py
