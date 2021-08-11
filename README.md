@@ -8,22 +8,15 @@
 </p>
 </h1>
 
-<style>
-img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-</style>
 
 <h4 align="centre"> 
     <p align="centre" > Loss Landscapes of different models at a glance</p>
-    <img src="https://github.com/Cross-Caps/STFADE/blob/main/Plots%20in%20paper/Loss%20Landscapes/gifs/loss.gif" style="width:50%;">
+    <img src="https://github.com/Cross-Caps/STFADE/blob/main/Plots%20in%20paper/Loss%20Landscapes/gifs/loss.gif" width="300" height="300" >
 </h4>
 
 <h4 align="centre"> 
     <p align="centre">  Gradient attribution for different models </p> 
-    <img src="https://github.com/Cross-Caps/STFADE/blob/main/Plots%20in%20paper/Gradient%20Maps/gifs/grads.gif" style="width:50%;" >
+    <img src="https://github.com/Cross-Caps/STFADE/blob/main/Plots%20in%20paper/Gradient%20Maps/gifs/grads.gif" width="600" height="300" >
 </h4>
 
 
