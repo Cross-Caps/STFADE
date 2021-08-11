@@ -83,25 +83,26 @@ python setup.py install
 
 ## Visualisation: Loss Landscapes and Gradient Maps
 
-1) ###Loss Landscapes 
+ ###Loss Landscapes 
         
         cd contextnet/contextnet_visualisation/loss_landscape_visualisation
         python generate_lists.py   
         python plot_loss.py
         python video_create.py
-            
-    ##### Loss Lists Notebook [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/Cross-Caps/STFADE/blob/main/contextnet/contextnet_visualisation/loss_landscape_visualisation/generate_loss_landscape.ipynb)
-    ##### For loss landscape, go to [loss video](https://github.com/Cross-Caps/STFADE/blob/main/Plots%20in%20Paper/Loss%20Landscapes)
+          
+   ##### Loss Lists Notebook [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/Cross-Caps/STFADE/blob/main/contextnet/contextnet_visualisation/loss_landscape_visualisation/generate_loss_landscape.ipynb)
+   ##### For loss landscape, go to [loss video](https://github.com/Cross-Caps/STFADE/blob/main/Plots%20in%20Paper/Loss%20Landscapes)
 
-2) ###For gradient visualisation
+
+ ###For gradient visualisation
 
         cd contextnet/contextnet_visualisation/gradient_visualisation
         python integrated_grad_vis.py
         python plot_gradients.py
         python video_create.py
     
-    ##### Gradient_Visualisation_Notebook [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/Cross-Caps/STFADE/blob/main/contextnet/contextnet_visualisation/gradient_visualisation/gradient_visualisation.ipynb)
-    ##### For gradient attribution, go to [gradients videos](https://github.com/Cross-Caps/STFADE/blob/main/Plots%20in%20Paper/Gradient%20Map)
+   ##### Gradient_Visualisation_Notebook [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/Cross-Caps/STFADE/blob/main/contextnet/contextnet_visualisation/gradient_visualisation/gradient_visualisation.ipynb)
+   ##### For gradient attribution, go to [gradients videos](https://github.com/Cross-Caps/STFADE/blob/main/Plots%20in%20Paper/Gradient%20Map)
 
 
 
