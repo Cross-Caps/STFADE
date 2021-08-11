@@ -47,7 +47,7 @@
 ### Publications
 
 - **ContextNet** (Reference: [http://arxiv.org/abs/2005.03191](http://arxiv.org/abs/2005.03191))
-  See [examples/contextnet](./contextnet)
+  See [contextnet](./contextnet)
 - **Raw Wwaveform Based CNN Through LOW-RANK Spectro-Temporal Decoupling** ([Reference](http://publications.idiap.ch/downloads/reports/2019/Abrol_Idiap-RR-11-2019.pdf))
 
 - See [tensorflow_asr/models/encoders](./tensorflow_asr/models/encoders)
