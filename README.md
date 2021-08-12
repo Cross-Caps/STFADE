@@ -19,7 +19,7 @@
 </h4>
 
 <h4 align="centre"> 
-    <p align="centre">  Gradient attribution for different models </p> 
+    <p align="centre">  Gradient Maps for different models at a glance</p> 
     <img src="https://github.com/Cross-Caps/STFADE/blob/main/Plots%20in%20Paper/Gradient%20Maps/gifs/grads.gif" width="750" height="300" />
 </h4>
 
