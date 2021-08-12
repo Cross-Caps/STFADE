@@ -31,7 +31,7 @@
 - (05/16/2021) Generated Loss Landscapes for the trained models, see [demo_loss](./contextnet/contextnet_visualisation/loss_landscape_visualisation)
 - (05/20/2020) Trained a LRC based deepnet with wave input [Low rank decomposition model](http://publications.idiap.ch/downloads/reports/2019/Abrol_Idiap-RR-11-2019.pdf)
 - (06/7/2020)  Generated Integrated Gradients for trained models [Keras Integrated Gradients documentation](https://www.tensorflow.org/tutorials/interpretability/integrated_gradients)
-- (20/7/2020) Add demo COLAB notebooks and animation for visualization
+- (20/7/2020) Added demo COLAB notebooks and animation for visualization
 
 ## Table of Contents
 
