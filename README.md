@@ -8,6 +8,8 @@
 </p>
 </h1>
 
+Code to reproduce plots from the paper:
+Spectral Temporal Feature intergAtion in Deep acoustic modEls
 
 <h4 align="centre"> 
     <p align="centre" > Loss Landscapes of different models at a glance</p>
@@ -83,9 +85,9 @@ python setup.py install
         python plot_loss.py
         python video_create.py
   
-   **Loss Lists Notebook** [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/Cross-Caps/STFADE/blob/main/contextnet/contextnet_visualisation/loss_landscape_visualisation/generate_loss_landscape.ipynb)
+   **Loss Landscape: Demo Notebook** [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/Cross-Caps/STFADE/blob/main/contextnet/contextnet_visualisation/loss_landscape_visualisation/generate_loss_landscape.ipynb)
    
-   **For loss landscape, go to** [loss video](https://github.com/Cross-Caps/STFADE/blob/main/Plots%20in%20Paper/Loss%20Landscapes)
+   **For Loss Landscape, go to** [loss video](https://github.com/Cross-Caps/STFADE/blob/main/Plots%20in%20Paper/Loss%20Landscapes)
 
 
 2. Gradient Maps
@@ -95,9 +97,9 @@ python setup.py install
         python plot_gradients.py
         python video_create.py
     
-    **Gradient_Visualisation_Notebook** [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/Cross-Caps/STFADE/blob/main/contextnet/contextnet_visualisation/gradient_visualisation/gradient_visualisation.ipynb)
+    **Gradient Visualisation: Demo Notebook** [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/Cross-Caps/STFADE/blob/main/contextnet/contextnet_visualisation/gradient_visualisation/gradient_visualisation.ipynb)
 
-    **For gradient attribution, go to** [gradients videos](https://github.com/Cross-Caps/STFADE/blob/main/Plots%20in%20Paper/Gradient%20Map)
+    **For Gradient Maps, go to** [gradients videos](https://github.com/Cross-Caps/STFADE/blob/main/Plots%20in%20Paper/Gradient%20Map)
 
 
 
