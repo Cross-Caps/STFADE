@@ -8,8 +8,10 @@
 </p>
 </h1>
 
-Code to reproduce plots from the paper:
-Spectral Temporal Feature intergAtion in Deep acoustic modEls
+<h2 align="center">
+<p>Spectral Temporal Feature intergAtion in Deep acoustic modEls</p>
+</h2>
+    
 
 <h4 align="centre"> 
     <p align="centre" > Loss Landscapes of different models at a glance</p>
