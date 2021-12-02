@@ -9,7 +9,7 @@
 </h1>
 
 <h2 align="center">
-<p>Spectral Temporal Feature intergAtion in Deep acoustic modEls</p>
+<p>Spectral Temporal Feature integration in Deep acoustic models</p>
 </h2>
     
 
