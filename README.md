@@ -9,9 +9,13 @@
 </h1>
 
 <h2 align="center">
-<p>Spectral Temporal Feature integration in Deep acoustic models</p>
+<p>Spectral Temporal Feature Integration in Deep acoustic models</p>
 </h2>
-    
+
+ Code to reproduce results from our paper: 
+<h5>On Spectral and Temporal Feature Encoding Behaviour in Stacked Architectures, NeurIPS2022-ENLSP Workshop</h5>
+
+
 
 <h4 align="centre"> 
     <p align="centre" > Loss Landscapes of different models at a glance</p>
